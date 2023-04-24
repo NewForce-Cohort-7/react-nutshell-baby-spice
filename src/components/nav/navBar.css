@@ -1,26 +1,35 @@
-.navbar {
-    background-color: white;
+.navbar--links{
+    display: flex;
+}
+
+.navbar--container {
+    background-color: lightgray;
     margin: 0;
     padding: 0;
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     height: 60px;
 }
 
-.navbar__item > a {
-    color: white;
+.navbar--item > a {
+    color: black;
+    font-weight: bold;
     text-decoration: none;
-    margin: 10px;
+    margin: 15px;
+    font-size: 1.25rem;
 }
 
 ul, li {
     list-style-type: none;
     margin: 0;
+    padding:0;
 }
 
-.navbar--logout {
-    margin-left: auto;
+.navbar--logo{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 10px;
 }
