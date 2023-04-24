@@ -1,0 +1,26 @@
+.navbar {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-items: center;
+    height: 60px;
+}
+
+.navbar__item > a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+
+ul, li {
+    list-style-type: none;
+    margin: 0;
+}
+
+.navbar--logout {
+    margin-left: auto;
+}
