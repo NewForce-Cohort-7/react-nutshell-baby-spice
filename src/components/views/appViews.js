@@ -9,6 +9,10 @@ import { CreateEventForm } from "../events/createEventForm.js"
 import { EditEventForm } from "../events/editEventForm.js"
 import { ArticleForm } from "../articles/ArticleForm"
 import { ArticleEdit } from "../articles/ArticleEdit"
+import { ChatBox } from "../chat/ChatBox"
+import { ChatEdit } from "../chat/ChatEdit"
+import { ChatList } from "../chat/ChatList"
+
 
 export const ApplicationViews = () => {
 
@@ -30,9 +34,9 @@ export const ApplicationViews = () => {
 
           </div>
 
-          <div className="section--right">
-            <div id="chat" className="chat--container">CHAT GO HERE</div>
-          </div>
+                    <div className="section--right">
+                        <div id="chat" className="messages--container"><ChatBox /> <ChatList /> </div>
+                    </div>
 
           <Outlet />
         </div>
@@ -46,6 +50,8 @@ export const ApplicationViews = () => {
             <Route path="/event/edit/:eventId" element={<EditEventForm />}></Route>
             <Route path="article/create" element={ <ArticleForm /> } />
             <Route path="article/edit/:articleId" element={ <ArticleEdit /> } />
+            <Route path="/messages/create" element={<ChatBox />}></Route>
+            <Route path="/messages/edit/:chatId" element={<ChatEdit />}></Route>
 
     </Routes>
   )
