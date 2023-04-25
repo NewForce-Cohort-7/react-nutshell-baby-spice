@@ -1,7 +1,7 @@
 {
-  "users": [],
+  "users": [{ "id": 1, "username": "Steve", "email": "me@me.com" }],
   "articles": [],
-  "messages": [],
+  "messages": [{ "id": 1, "userId": 1, "message": "What's up?" }],
   "events": [],
   "tasks": [],
   "images": [],
