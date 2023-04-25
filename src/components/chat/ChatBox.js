@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getMessages } from "../ApiManager"
 export const ChatBox = () => {
     /*
         TODO: Add the correct default properties to the

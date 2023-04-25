@@ -4,7 +4,9 @@ import { Events } from "../events/events.js"
 import { CreateEventForm } from "../events/createEventForm.js"
 import { EditEventForm } from "../events/editEventForm.js"
 import { ChatBox } from "../chat/ChatBox"
+import { ChatEdit } from "../chat/ChatEdit"
 import { ChatList } from "../chat/ChatList"
+
 
 export const ApplicationViews = () => {
 
@@ -25,7 +27,7 @@ export const ApplicationViews = () => {
                     </div>
 
                     <div className="section--right">
-                        <div id="chat" className="chat--container"><ChatBox /> <ChatList /> </div>
+                        <div id="chat" className="messages--container"><ChatBox /> <ChatList /> </div>
                     </div>
 
                     <Outlet/>
@@ -36,6 +38,8 @@ export const ApplicationViews = () => {
 
             <Route path="/event/create" element={<CreateEventForm />}></Route>
             <Route path="/event/edit/:eventId" element={<EditEventForm />}></Route>
+            <Route path="/messages/create" element={<ChatBox />}></Route>
+            <Route path="/messages/edit/:chatId" element={<ChatEdit />}></Route>
 
         </Routes>
     )
