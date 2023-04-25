@@ -5,6 +5,8 @@ export const NavBar = () => {
 
     const navigate = useNavigate()
 
+    //ATTEMPT TO GET NAVBAR LINKS TO SCROLL TO SECTION
+    //NOT WORKING AS INTENDED
     const scrollToSection = (id) => {
         document?.getElementById(id)?.scrollIntoView({behavior: 'smooth'});
       }
@@ -14,7 +16,7 @@ export const NavBar = () => {
 
         <div className="navbar--container">
 
-            <div className="navbar--logo">NUTSHELL</div>
+            <Link className="navbar--logo" to={"/"}> NUTSHELL </Link>
 
             <ul className="navbar--links">
 
