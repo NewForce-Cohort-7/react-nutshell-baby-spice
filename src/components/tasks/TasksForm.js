@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom"
 export const TasksForm = () => {
   const [task, update] = useState({
     title: "",
-    description: "",
+    description: ""
   })
 
   const navigate = useNavigate()
 
-  const localActiveUser = localStorage.getItem("active_user")
+  const localActiveUser = localStorage.getItem("activeUser")
   const activeUserObject = JSON.parse(localActiveUser)
 
   const handleSaveButtonClick = (event) => {
@@ -31,7 +31,7 @@ export const TasksForm = () => {
     })
       .then(res => res.json())
       .then(() => {
-        navigate("/tasks")
+        navigate("/")
       })
   }
 
@@ -48,14 +48,10 @@ export const TasksForm = () => {
             placeholder="Add a name for your task"
             value={task.title}
             onChange={(evt) => {
-              const copyTitleState = { ...task.title }
+              const copyTitleState = { ...task }
               copyTitleState.title = evt.target.value
               update(copyTitleState)
             }} />
-        </div>
-      </fieldset>
-      <fieldset>
-        <div>
           <label htmlFor="description">Description:</label>
           <input
             required autoFocus
@@ -64,7 +60,7 @@ export const TasksForm = () => {
             placeholder="Brief description of task"
             value={task.description}
             onChange={(evt) => {
-              const copyDescriptionState = { ...task.description }
+              const copyDescriptionState = { ...task }
               copyDescriptionState.description = evt.target.value
               update(copyDescriptionState)
             }} />

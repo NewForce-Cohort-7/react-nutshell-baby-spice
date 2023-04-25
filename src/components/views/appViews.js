@@ -18,9 +18,9 @@ export const ApplicationViews = () => {
           </div>
 
           <div className="section--middle">
-            <div id="events" className="events--container"> 
-                            <Events/> 
-                        </div>
+            <div id="events" className="events--container">
+              <Events />
+            </div>
             <div id="news" className="news--container">NEWS GO HERE</div>
           </div>
 
@@ -32,11 +32,11 @@ export const ApplicationViews = () => {
         </div>
       }>
 
-            </Route>
+      </Route>
 
-            <Route path="/event/create" element={<CreateEventForm />}></Route>
-            <Route path="/event/edit/:eventId" element={<EditEventForm />}></Route>
+      <Route path="/event/create" element={<CreateEventForm />}></Route>
+      <Route path="/event/edit/:eventId" element={<EditEventForm />}></Route>
 
-        </Routes>
-    )
+    </Routes>
+  )
 }

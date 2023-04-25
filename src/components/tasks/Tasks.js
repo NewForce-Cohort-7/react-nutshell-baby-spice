@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 import { getTasks } from "../ApiManager"
+import { useNavigate } from "react-router-dom"
 
 export const Tasks = () => {
-  const [tasks, setTasks] = useState()
+  const [tasks, setTasks] = useState([])
   const [filteredTasks, setFiltered] = useState([])
 
+  const localActiveUser = localStorage.getItem("activeUser")
+  const activeUserObject = JSON.parse(localActiveUser)
 
   const navigate = useNavigate()
 
@@ -19,25 +21,32 @@ export const Tasks = () => {
     []
   )
 
+  useEffect(
+    () => {
+      const myTasks = tasks.filter(task => task.userId === activeUserObject.id)
+      setFiltered(myTasks)
+    },
+    [activeUserObject.id, tasks]
+  )
 
-  return <>
-    {
-      <button onClick={() => navigate("/ticket/create")}>Create Ticket</button>
-    }
 
-
-    <h2>List of Tickets</h2>
-
-    <article className="tickets">
-      {
-        filteredTasks.map(
-          (task) => {
-            return <section className="task" key={`task--${tasks.id}`}>
-              <header>{tasks.description}</header>
-            </section>
-          }
-        )
-      }
-    </article>
-  </>
+  if (tasks[0]) {
+    return <>
+      <h2>List of Tasks</h2>
+      <article className="tasks">
+        {
+          filteredTasks.map(
+            (task) => {
+              return <section className="task" key={`task--${tasks.id}`}>
+                <ul>
+                  <li>{task.title}</li>
+                  <li>{task.description}</li>
+                </ul>
+              </section>
+            }
+          )
+        }
+      </article>
+    </>
+  }
 }
