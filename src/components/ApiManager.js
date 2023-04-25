@@ -1,5 +1,5 @@
 export const getNews = () => {
-    return fetch('http://localhost:8088/news?_expand=user')
+    return fetch('http://localhost:8088/articles')
     .then(response => response.json())
 }
 
@@ -64,3 +64,29 @@ export const editChat = (chatObject) => {
 }
 
 
+export const createArticle = (articleObject) => {
+    return fetch(`http://localhost:8088/articles`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(articleObject)
+    })
+    .then(r => r.json())
+}
+
+export const editArticle = (articleObject) => {
+    return fetch(`http://localhost:8088/articles/${articleObject.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(articleObject)
+    })
+    .then(r => r.json())
+}
+
+export const getArticleById = (id) => {
+    return fetch(`http://localhost:8088/articles/${id}`)
+    .then(r => r.json())
+}
