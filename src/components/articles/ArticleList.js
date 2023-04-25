@@ -20,21 +20,21 @@ export const ArticleList = () => {
         []
     )
 
-    return <>
-    
-    <button onClick={ () => navigate("/articles/create")}>Add Article</button>
-    
-
-    <h2>Articles</h2>
-
-    <article className="articles">
+    return <article className="articles">
         {
-           
-                articles.map(
-                    getNews={getNews} 
-                )
-            
+            articles.map(article => {
+                return <section className="article" key={`article--${article.id}`}>
+                    <div className="article--title">
+                        <a href={`/article/edit/${article.id}`} title="Click to edit">{article.title}</a>
+                    </div>
+                    <div className="article--synopsis">Synopsis: {article.synopsis}</div>
+                    <div className="article--url">URL: {article.url}</div>
+                </section>
+            })
         }
+
+        <button onClick={() => navigate("/article/create")}>Add Article</button>
+    
     </article>
-    </>
+    
 }

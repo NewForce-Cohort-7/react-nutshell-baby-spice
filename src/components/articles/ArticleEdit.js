@@ -1,12 +1,11 @@
-//Arnold Rispress
-//This module is used to create a new article for the app
+//Arnold Rispress - Articles
+//This module is used to edit articles on the app
 
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createArticle } from "../ApiManager";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { editArticle, getArticleById } from "../ApiManager.js";
 
-
-export const ArticleForm = () => {
+export const ArticleEdit = () => {
     const [article, update] = useState({
         title: "",
         synopsis: "",
@@ -15,30 +14,26 @@ export const ArticleForm = () => {
 
     const navigate = useNavigate()
 
-    const localUser = localStorage.getItem("activeUser")
-    const userObject = JSON.parse(localUser)
+    const { articleId } =useParams()
 
-    const handleSaveButtonClick = (event) => {
-        event.preventDefault()
-        console.log("You clicked the button")
+    useEffect(() => {
+        getArticleById(articleId)
+        .then((articleArray) => {
+            update(articleArray)
+        })
+    }, [])
 
-        const ticketToSendToAPI = {
-            userId: userObject.id,
-            title: article.title,
-            synopsis: article.synopsis,
-            url: article.url
-        }
-
-        return createArticle(ticketToSendToAPI)
-        .then(() => {
+    const handleSaveButtonClick = (evt) => {
+        evt.preventDefault()
+        editArticle(article)
+        .then(()=> {
             navigate("/")
         })
-      
     }
 
-    return (
+    return <>
         <form className="articleForm">
-            <h2 className="articleForm--title">New Article</h2>
+            <h2 className="articleForm--title">Edit Article</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="title">Title</label>
@@ -47,7 +42,7 @@ export const ArticleForm = () => {
                         type="text"
                         className="form-control"
                         placeholder="Title of the Article"
-                        value={article.title}
+                        value={article?.title}
                         onChange={
                             (evt) => {
                                 const copy = {...article}
@@ -65,7 +60,7 @@ export const ArticleForm = () => {
                         type="text"
                         className="form-control"
                         placeholder="Brief description about the article"
-                        value={article.synopsis}
+                        value={article?.synopsis}
                         onChange={
                             (evt) => {
                                 const copy = {...article}
@@ -83,7 +78,7 @@ export const ArticleForm = () => {
                         type="text"
                         className="form-control"
                         placeholder="Please enter the URL for the article"
-                        value={article.url}
+                        value={article?.url}
                         onChange={
                             (evt) => {
                                 const copy = {...article}
@@ -96,8 +91,8 @@ export const ArticleForm = () => {
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
             className="btn btn-primary">
-                Submit Article
+                Edit Article
             </button>
         </form>
-    )
+    </>
 }

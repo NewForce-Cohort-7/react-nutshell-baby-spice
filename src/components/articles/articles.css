@@ -1,3 +1,23 @@
 .articles{
-    background-color: red;
+    padding: 10px;
+}
+
+.article{
+    background-color: greenyellow;
+    padding: 10px;
+    border: 1px dotted black;
+    margin: 15px;
+}
+
+.article--title {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.article--synopsis {
+    font-weight: lighter;
+}
+
+.articleForm {
+    background-color: bisque;
 }
