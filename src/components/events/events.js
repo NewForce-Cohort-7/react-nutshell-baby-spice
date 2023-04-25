@@ -55,7 +55,6 @@ export const Events = () => {
                     eventCount++
                 }
             })
-            console.log(monthlyEvents)
 
             if(eventCount !== 0){
                 jsxArray.push(
@@ -67,7 +66,6 @@ export const Events = () => {
             }
         }
 
-        console.log(jsxArray)
         return jsxArray
     }
     
