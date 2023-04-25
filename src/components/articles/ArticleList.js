@@ -1,3 +1,6 @@
+//Arnold Rispress//
+//This module is used for rendering the Articles on the main page//
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getNews } from "../ApiManager";
