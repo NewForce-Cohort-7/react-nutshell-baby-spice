@@ -64,6 +64,18 @@ export const TasksForm = () => {
               copyDescriptionState.description = evt.target.value
               update(copyDescriptionState)
             }} />
+          <label htmlFor="description">Description:</label>
+          <input
+            required autoFocus
+            type="text"
+            className="taskForm-control"
+            placeholder="Brief description of task"
+            value={task.description}
+            onChange={(evt) => {
+              const copyDescriptionState = { ...task }
+              copyDescriptionState.description = evt.target.value
+              update(copyDescriptionState)
+            }} />
         </div>
       </fieldset>
       <button
