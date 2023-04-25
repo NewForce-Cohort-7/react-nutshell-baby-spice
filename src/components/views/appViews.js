@@ -1,5 +1,7 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import "./appViews.css"
+import { ArticleList } from "../articles/ArticleList"
+
 
 export const ApplicationViews = () => {
 
@@ -15,6 +17,8 @@ export const ApplicationViews = () => {
                     <div className="section--middle">
                         <div id="events" className="events--container">EVENTS GO HERE</div>
                         <div id="news" className="news--container">NEWS GO HERE</div>
+                    
+
                     </div>
 
                     <div className="section--right">
@@ -24,6 +28,8 @@ export const ApplicationViews = () => {
                     <Outlet/>
                 </div>
             }>
+
+                <Route path="articles" element={ <ArticleList /> } />
 
             </Route>
         </Routes>
