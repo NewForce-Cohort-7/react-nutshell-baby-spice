@@ -13,7 +13,7 @@ export const getTasks = () => {
     .then(response => response.json())
 }
 
-export const getMessages = () => {
+export const getChats = () => {
     return fetch('http://localhost:8088/messages?_expand=user')
     .then(response => response.json())
 }
@@ -45,6 +45,24 @@ export const editEvent = (eventObject) => {
 })
 .then(response => response.json())
 }
+
+export const getChatById = (id) => {
+    return fetch(`http://localhost:8088/messages/${id}`)
+    .then(response => response.json())
+}
+
+export const editChat = (chatObject) => {
+    return fetch(`http://localhost:8088/messages/${chatObject.id}`, {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(chatObject)
+
+})
+.then(response => response.json())
+}
+
 
 export const createArticle = (articleObject) => {
     return fetch(`http://localhost:8088/articles`, {
