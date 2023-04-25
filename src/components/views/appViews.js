@@ -2,9 +2,13 @@ import { Outlet, Route, Routes } from "react-router-dom"
 import { Tasks } from "../tasks/Tasks"
 import { TasksForm } from "../tasks/TasksForm"
 import "./appViews.css"
+import { ArticleList } from "../articles/ArticleList"
+
 import { Events } from "../events/events.js"
 import { CreateEventForm } from "../events/createEventForm.js"
 import { EditEventForm } from "../events/editEventForm.js"
+import { ArticleForm } from "../articles/ArticleForm"
+import { ArticleEdit } from "../articles/ArticleEdit"
 
 export const ApplicationViews = () => {
 
@@ -21,7 +25,9 @@ export const ApplicationViews = () => {
             <div id="events" className="events--container">
               <Events />
             </div>
-            <div id="news" className="news--container">NEWS GO HERE</div>
+            <div id="news" className="news--container"><ArticleList/></div>
+                    
+
           </div>
 
           <div className="section--right">
@@ -32,10 +38,14 @@ export const ApplicationViews = () => {
         </div>
       }>
 
-      </Route>
+                
 
-      <Route path="/event/create" element={<CreateEventForm />}></Route>
-      <Route path="/event/edit/:eventId" element={<EditEventForm />}></Route>
+            </Route>
+
+            <Route path="/event/create" element={<CreateEventForm />}></Route>
+            <Route path="/event/edit/:eventId" element={<EditEventForm />}></Route>
+            <Route path="article/create" element={ <ArticleForm /> } />
+            <Route path="article/edit/:articleId" element={ <ArticleEdit /> } />
 
     </Routes>
   )
