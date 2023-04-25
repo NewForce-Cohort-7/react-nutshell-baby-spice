@@ -4,6 +4,7 @@ import { Authorized } from './components/views/authorized.js';
 import { Login } from './components/auth/login.js';
 import { Register } from './components/auth/register.js';
 import { NavBar } from './components/nav/navBar.js';
+import { ApplicationViews } from './components/views/appViews.js';
 
 export const Nutshell = () => {
 	return <Routes>
@@ -14,15 +15,11 @@ export const Nutshell = () => {
 			<Authorized>
 				<>
           <NavBar/>
-          <div className="Dashboard">
-            <header className="App-header">
-              <h1>Welcome to Nutshell</h1>
-            </header>
-          </div>
-				</>
+          <ApplicationViews/>
+        </>
 			</Authorized>
+
 
 		} />
 	</Routes>
 }
-
