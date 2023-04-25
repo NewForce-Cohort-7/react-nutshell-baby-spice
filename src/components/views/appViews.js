@@ -1,6 +1,6 @@
 import { Outlet, Route, Routes } from "react-router-dom"
-import { Tasks } from "../tasks/Tasks"
-import { TasksForm } from "../tasks/TasksForm"
+import { TasksButton } from "../tasks/TasksButton"
+
 import "./appViews.css"
 import { ArticleList } from "../articles/ArticleList"
 
@@ -22,36 +22,36 @@ export const ApplicationViews = () => {
 
         <div className="main--container">
           <div className="section--left">
-            <div id="tasks" className="tasks--container"><Tasks /><TasksForm /></div>
+            <div id="tasks" className="tasks--container"><TasksButton /></div>
           </div>
 
           <div className="section--middle">
             <div id="events" className="events--container">
               <Events />
             </div>
-            <div id="news" className="news--container"><ArticleList/></div>
-                    
+            <div id="news" className="news--container"><ArticleList /></div>
+
 
           </div>
 
-                    <div className="section--right">
-                        <div id="chat" className="messages--container"><ChatBox /> <ChatList /> </div>
-                    </div>
+          <div className="section--right">
+            <div id="chat" className="messages--container"><ChatBox /> <ChatList /> </div>
+          </div>
 
           <Outlet />
         </div>
       }>
 
-                
 
-            </Route>
 
-            <Route path="/event/create" element={<CreateEventForm />}></Route>
-            <Route path="/event/edit/:eventId" element={<EditEventForm />}></Route>
-            <Route path="article/create" element={ <ArticleForm /> } />
-            <Route path="article/edit/:articleId" element={ <ArticleEdit /> } />
-            <Route path="/messages/create" element={<ChatBox />}></Route>
-            <Route path="/messages/edit/:chatId" element={<ChatEdit />}></Route>
+      </Route>
+
+      <Route path="/event/create" element={<CreateEventForm />}></Route>
+      <Route path="/event/edit/:eventId" element={<EditEventForm />}></Route>
+      <Route path="article/create" element={<ArticleForm />} />
+      <Route path="article/edit/:articleId" element={<ArticleEdit />} />
+      <Route path="/messages/create" element={<ChatBox />}></Route>
+      <Route path="/messages/edit/:chatId" element={<ChatEdit />}></Route>
 
     </Routes>
   )
