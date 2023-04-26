@@ -1,9 +1,9 @@
 import { Outlet, Route, Routes } from "react-router-dom"
-import { TasksButton } from "../tasks/TasksButton"
 
 import "./appViews.css"
-import { ArticleList } from "../articles/ArticleList"
 
+import { TaskContainer } from "../tasks/TaskContainer"
+import { ArticleList } from "../articles/ArticleList"
 import { Events } from "../events/events.js"
 import { CreateEventForm } from "../events/createEventForm.js"
 import { EditEventForm } from "../events/editEventForm.js"
@@ -22,7 +22,7 @@ export const ApplicationViews = () => {
 
         <div className="main--container">
           <div className="section--left">
-            <div id="tasks" className="tasks--container"><TasksButton /></div>
+            <div id="tasks" className="tasks--container"><TaskContainer /></div>
           </div>
 
           <div className="section--middle">
