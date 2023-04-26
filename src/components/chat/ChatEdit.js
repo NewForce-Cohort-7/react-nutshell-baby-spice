@@ -42,7 +42,7 @@ export const ChatEdit = () => {
         </fieldset>
         <button
           onClick={(evt) => handleSaveButtonClick(evt)}
-          className="btn btn-primary"
+          className="button"
         >
           Save Edited Message
         </button>
