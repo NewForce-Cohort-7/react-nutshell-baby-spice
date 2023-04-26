@@ -64,8 +64,12 @@ export const getTaskById = (id) => {
     .then(response => response.json())
 }
 
-export const getCompletedTasks = (completed) => {
-  return fetch(`http://localhost:8088/tasks/${completed}`)
+export const getCompletedTasks = () => {
+  return fetch(`http://localhost:8088/tasks?completed=true`)
+    .then(response => response.json())
+}
+export const getTodos = () => {
+  return fetch(`http://localhost:8088/tasks?completed=false`)
     .then(response => response.json())
 }
 
@@ -127,26 +131,26 @@ export const getArticleById = (id) => {
 }
 
 export const getFriendsById = (id) => {
-    return fetch(`http://localhost:8088/friends?_expand=user&friendId=${id}`)
+  return fetch(`http://localhost:8088/friends?_expand=user&friendId=${id}`)
     .then(r => r.json())
 }
 
 export const getUserFriends = () => {
-    return fetch('http://localhost:8088/users?_embed=friends')
+  return fetch('http://localhost:8088/users?_embed=friends')
     .then(response => response.json())
 }
 
 export const addFriend = (userId, friendId) => {
-    return fetch(`http://localhost:8088/friends`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            userId: +userId,
-            friendId: +friendId
-        })
-
+  return fetch(`http://localhost:8088/friends`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      userId: +userId,
+      friendId: +friendId
     })
+
+  })
     .then(response => response.json())
 }

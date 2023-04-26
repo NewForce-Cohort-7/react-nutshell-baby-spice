@@ -1,18 +1,18 @@
-import { useState } from "react"
-import { getTasks } from "../ApiManager"
+// import { useState, useEffect } from "react"
+// import { getTodos } from "../ApiManager"
 
-export const Todos = () => {
-  const [todos, setTodos] = useState([])
+// export const Todos = () => {
+//   const [todos, setTodos] = useState([])
 
-  useEffect(() => {
-    getTasks()
-      .then((eventsArray) => {
-        setEvents(eventsArray)
-      })
-  }, []
-  )
 
-  return (
 
-  )
-}
+//   useEffect(() => {
+//     getTodos()
+//       .then((todosArray) => {
+//         setTodos(todosArray)
+//       })
+//   }, []
+//   )
+
+//   return
+// }
