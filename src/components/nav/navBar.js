@@ -21,19 +21,19 @@ export const NavBar = () => {
             <ul className="navbar--links">
 
                 <li className="navbar--item active">
-                    <Link className="navbar--link" onClick={scrollToSection("events")}>Events</Link>
+                    <Link className="navbar--link" to={"/"}>Events</Link>
                 </li>
 
                 <li className="navbar--item active">
-                    <Link className="navbar--link" onClick={scrollToSection("news")}>News</Link>
+                    <Link className="navbar--link" to={"/"}>News</Link>
                 </li>
 
                 <li className="navbar--item active">
-                    <Link className="navbar--link" onClick={scrollToSection("tasks")}>Tasks</Link>
+                    <Link className="navbar--link" to={"/"}>Tasks</Link>
                 </li>
 
                 <li className="navbar--item active">
-                    <Link className="navbar--link" onClick={scrollToSection("chat")}>Chat</Link>
+                    <Link className="navbar--link" to={"/"}>Chat</Link>
                 </li>
 
             </ul>

@@ -90,3 +90,28 @@ export const getArticleById = (id) => {
     return fetch(`http://localhost:8088/articles/${id}`)
     .then(r => r.json())
 }
+
+export const getFriendsById = (id) => {
+    return fetch(`http://localhost:8088/friends?_expand=user&friendId=${id}`)
+    .then(r => r.json())
+}
+
+export const getUserFriends = () => {
+    return fetch('http://localhost:8088/users?_embed=friends')
+    .then(response => response.json())
+}
+
+export const addFriend = (userId, friendId) => {
+    return fetch(`http://localhost:8088/friends`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            userId: +userId,
+            friendId: +friendId
+        })
+
+    })
+    .then(response => response.json())
+}
