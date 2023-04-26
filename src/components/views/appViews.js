@@ -12,6 +12,7 @@ import { ArticleEdit } from "../articles/ArticleEdit"
 import { ChatBox } from "../chat/ChatBox"
 import { ChatEdit } from "../chat/ChatEdit"
 import { ChatList } from "../chat/ChatList"
+import { FriendsList } from "../friends/friends.js"
 
 
 export const ApplicationViews = () => {
@@ -34,9 +35,10 @@ export const ApplicationViews = () => {
 
           </div>
 
-          <div className="section--right">
-            <div id="chat" className="messages--container"><ChatBox /> <ChatList /> </div>
-          </div>
+                    <div className="section--right">
+                        <div id="friends" className="friends--container"><FriendsList /> </div>
+                        <div id="chat" className="messages--container"><ChatBox /> <ChatList /> </div>
+                    </div>
 
           <Outlet />
         </div>

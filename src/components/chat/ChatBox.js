@@ -52,10 +52,9 @@ export const ChatBox = () => {
 
     return (
         <form className="chatBox">
-            <h2 className="chatBox__title">New Chat</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="Message">Message:</label>
+                    <label htmlFor="Message">New Message:</label>
                     <input
                         required autoFocus
                         type="text"
@@ -74,7 +73,7 @@ export const ChatBox = () => {
             <button
              onClick={
                 (clickEvent) => handleSaveButtonClick(clickEvent)}            
-            className="btn btn-primary">
+            className="button">
                 Submit Message
             </button>
         </form>

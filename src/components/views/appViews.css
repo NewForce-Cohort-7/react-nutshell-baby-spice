@@ -30,6 +30,9 @@
 .section--right {
   background-color: aquamarine;
   border-left: solid 4px lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
 .news--container,
@@ -60,3 +63,13 @@
   width: 87%;
   padding: 4px;
 }
+
+.friends--container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.messages--container{
+    padding: 10px;
+}
+
