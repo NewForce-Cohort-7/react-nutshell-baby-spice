@@ -29,12 +29,12 @@ export const Events = () => {
 
         return eventsArray.map(singleEvent => {
 
-            return <section className="event" key={`event--${singleEvent.id}`}>
-                        <div className="event--name">
+            return <section className="bg-red-500" key={`event--${singleEvent.id}`}>
+                        <div className="bg-red-500">
                             <a href={`/event/edit/${singleEvent.id}`} title="Click to edit">{singleEvent.name}</a>
                         </div>
-                        <div className="event--location">Location: {singleEvent.location} </div>
-                        <div className="event--date">Date: {singleEvent.date} </div>
+                        <div className="bg-blue-400">Location: {singleEvent.location} </div>
+                        <div className="bg-red-500">Date: {singleEvent.date} </div>
                     </section>
         })
     }
