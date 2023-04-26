@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
+import { getChats } from "../ApiManager.js"
+import "./chats.css"
 import { getChats } from "../ApiManager"
 
 export const ChatList = () => {
@@ -9,7 +11,7 @@ export const ChatList = () => {
     const userObject = JSON.parse(localUser)
    
     useEffect(() => {
-     getChats()
+      getChats()
         .then((chatArray) => { setChats(chatArray) })
     }, [])
     
@@ -17,11 +19,12 @@ export const ChatList = () => {
     
   
     return (
-      <>
-        <h2>List of Messages</h2>
+      <div className="chat--container">
+        <h2>CHAT</h2>
         <article className="chats">
           {chats.map((chat) => (
             <section className="chat" key={`chat--${chat.id}`}>
+            <div className="chatter">{chat.user.username}:</div>
               <Link to={`/messages/edit/${chat.id}`}>
                 {chat.message}
               </Link>
@@ -29,7 +32,7 @@ export const ChatList = () => {
             </section>
           ))}
         </article>
-      </>
+      </div>
     )
   }
 // import { useEffect, useState } from "react";

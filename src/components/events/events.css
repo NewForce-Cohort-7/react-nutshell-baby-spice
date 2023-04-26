@@ -8,11 +8,11 @@
 .event{
     background: white;
     margin:15px;
-    padding: 5px;
+    padding: 1px;
 }
 
-.event:first-child {
-    background: lightgrey;
+.event--list:first-child > div > .event {
+    background: blue;
     font-weight: bolder;
     font-size: larger;
 }
@@ -42,4 +42,8 @@
 .event--input{
     width: 400px;
     margin-top: 5px;
+}
+
+h3 {
+    margin: 0;
 }
