@@ -1,0 +1,19 @@
+.friends--header {
+    font-size: larger;
+}
+
+.friend {
+    font-size: large;
+}
+
+.search--input{
+    width: 70%;
+    font: medium;
+    font-weight: 300;
+    padding: 5px;
+}
+
+.search--instruct{
+    font-size: small;
+    padding-top: 5px;
+}

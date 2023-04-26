@@ -8,11 +8,11 @@
 .event{
     background: white;
     margin:15px;
-    padding: 5px;
+    padding: 1px;
 }
 
 .event--list:first-child > div > .event {
-    background: lightgrey;
+    background: blue;
     font-weight: bolder;
     font-size: larger;
 }

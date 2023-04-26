@@ -1,0 +1,12 @@
+.chats{
+    padding: 5px;
+    font-size: medium;
+}
+
+.chat{
+    margin: 10px;
+}
+
+.chat--container{
+    margin-top: 20px;
+}
