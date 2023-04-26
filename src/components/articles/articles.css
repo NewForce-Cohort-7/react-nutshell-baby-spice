@@ -21,3 +21,8 @@
 .articleForm {
     background-color: bisque;
 }
+
+.article--title > a:hover {
+    text-decoration: none;
+    color: blue;
+}
