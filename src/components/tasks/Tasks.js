@@ -44,9 +44,9 @@ export const Tasks = () => {
     setEditingTask(id);
   };
 
-  const handleSaveTask = (id, title, description) => {
+  const handleSaveTask = (id, title, description, date) => {
     const task = tasks.find((task) => task.id === id);
-    const updatedTask = { ...task, title, description };
+    const updatedTask = { ...task, title, description, date };
     editTask(updatedTask).then(() => {
       setTasks((currentTasks) =>
         currentTasks.map((task) => (task.id === id ? updatedTask : task))

@@ -11,7 +11,7 @@ export const Task = ({
   };
 
   const handleEditTask = () => {
-    onEditTask(task.id, task.title, task.description);
+    onEditTask(task.id, task.title, task.description, task.date);
   };
 
   const handleDeleteTask = () => {
@@ -22,6 +22,7 @@ export const Task = ({
     <div key={task.id} className="task">
       <h3>{task.title}</h3>
       <p>{task.description}</p>
+      <p>{task.date}</p>
       <button onClick={handleToggleCompleted}>
         {task.completed ? "Mark as Incomplete" : "Mark as Complete"}
       </button>

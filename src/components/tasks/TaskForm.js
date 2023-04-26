@@ -39,7 +39,7 @@ export const TaskForm = ({ onAddTask }) => {
           id="taskForm--description"
         />
       </div>
-      <div>
+      <div className="taskForm--row taskForm--dateRow">
         <label htmlFor="taskForm--date">Due Date:</label>
         <input
           value={date}

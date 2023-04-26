@@ -64,6 +64,11 @@ export const getTaskById = (id) => {
     .then(response => response.json())
 }
 
+export const getCompletedTasks = (completed) => {
+  return fetch(`http://localhost:8088/tasks/${completed}`)
+    .then(response => response.json())
+}
+
 export const editTask = (taskObject) => {
   return fetch(`http://localhost:8088/tasks/${taskObject.id}`, {
     method: "PUT",
