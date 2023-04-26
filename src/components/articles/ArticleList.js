@@ -10,8 +10,27 @@ export const ArticleList = () => {
     const [articles, setArticles] = useState([])
 
     const navigate = useNavigate()
+    
+    
+    const fetchArticles = () => { // this is the GET request to get all articles from the database (fetchAllArticles)
 
-    useEffect(
+       
+    
+        fetch(`http://localhost:8088/articles`)
+          .then(response => response.json())
+          .then(data => {
+            const sortedArticles = data.sort((a, b) => new Date(b.date) - new Date(a.date)) // sorts articles by date
+            const updatedArticles = sortedArticles.map(article => ({ // this is the map function to add tags to the articles
+              ...article, 
+              tags: article.tags ? article.tags.map(tag => tag.name) : [], // grabbing the tag names from the tags array 
+            }))
+            // update state with new articles
+            setArticles(updatedArticles)
+          })
+      }
+    
+    
+      useEffect(
         () => {
             getNews()
             .then(
@@ -23,6 +42,8 @@ export const ArticleList = () => {
         []
     )
 
+    
+
     return <article className="articles">
         {
             articles.map(article => {
@@ -32,11 +53,14 @@ export const ArticleList = () => {
                     </div>
                     <div className="article--synopsis">Synopsis: {article.synopsis}</div>
                     <div className="article--url">URL: {article.url}</div>
+                    <div className="article--tags">Tags: {article.tags.name} </div>
+                   
+
                 </section>
             })
         }
 
-        <button onClick={() => navigate("/article/create")}>Add Article</button>
+        <button onClick={() => navigate("/article/create")} className="btn btn-primary" >Add Article</button>
     
     </article>
     

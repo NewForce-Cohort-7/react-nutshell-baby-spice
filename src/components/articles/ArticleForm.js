@@ -6,11 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { createArticle } from "../ApiManager";
 
 
+
 export const ArticleForm = () => {
     const [article, update] = useState({
         title: "",
         synopsis: "",
-        url: ""
+        url: "",
+        date: "",
+        tags: ""
     })
 
     const navigate = useNavigate()
@@ -26,7 +29,9 @@ export const ArticleForm = () => {
             userId: userObject.id,
             title: article.title,
             synopsis: article.synopsis,
-            url: article.url
+            url: article.url,
+            date: new Date().toISOString(),
+            tags: article.tags.split(",").map((tag) => ({name: tag.trim()}))
         }
 
         return createArticle(ticketToSendToAPI)
@@ -91,6 +96,25 @@ export const ArticleForm = () => {
                                 update(copy)
                             }
                         } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="tags-input-container">
+                   
+                    <label htmlFor="tags">Tags</label>
+                    <input
+                        type="text"
+                        className="tags-input"
+                        placeholder="Enter a tag"
+                        value={article.tags}
+                        onChange={
+                            (evt) => {
+                                const copy = {...article}
+                                copy.tags = evt.target.value
+                                update(copy)
+                            }
+                        }
+                         />
                 </div>
             </fieldset>
             <button

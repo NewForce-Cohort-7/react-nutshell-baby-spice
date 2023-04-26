@@ -9,7 +9,9 @@ export const ArticleEdit = () => {
     const [article, update] = useState({
         title: "",
         synopsis: "",
-        url: ""
+        url: "",
+        date: "",
+        tags: ""
     })
 
     const navigate = useNavigate()
@@ -86,6 +88,25 @@ export const ArticleEdit = () => {
                                 update(copy)
                             }
                         } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="tags-input-container">
+                   
+                    <label htmlFor="tags">Tags</label>
+                    <input
+                        type="tag"
+                        className="tags-input"
+                        placeholder="Enter a tag"
+                        value={article.tags}
+                        onChange={
+                            (evt) => {
+                                const copy = {...article}
+                                copy.tags = evt.target.value
+                                update(copy)
+                            }
+                        }
+                         />
                 </div>
             </fieldset>
             <button
