@@ -24,7 +24,7 @@ export const FriendSearch = () => {
     //FILTER THE USERS SO THAT ONLY THOSE WITH 0 FRIENDS OR NO FRIEND USERIDS THAT ALREADY MATCH THE ACTIVEUSER
     useEffect(() => {
         const userArray = userFriends.filter(user => { 
-            return user.friends.length=== 0 || user.friends.some(friend => {
+            return (user.friends.length === 0 && user.id !== userObject.id) || user.friends.some(friend => {
                 return friend.friendId !== userObject.id && friend.userId !== userObject.id
             })
         })
