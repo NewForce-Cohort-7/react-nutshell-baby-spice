@@ -58,7 +58,7 @@ export const Events = () => {
 
             if(eventCount !== 0){
                 jsxArray.push(
-                <div className="event--list">
+                <div className="event--list" key={`events--${i}`}>
                     <h3>{getMonthName(i)} ({eventCount})</h3>
                     <div>{createEventList(monthlyEvents)}</div>
                 </div>

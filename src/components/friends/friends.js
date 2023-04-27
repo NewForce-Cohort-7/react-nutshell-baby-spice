@@ -40,7 +40,7 @@ export const FriendsList = () => {
             </div>
         })}
 
-        <button className="button" onClick={() => setSearch(true)}>Add Friends</button>
+        <button className="button" onClick={() => {showSearch ? setSearch(false) : setSearch(true)}}>Add Friends</button>
 
         { showSearch ? <FriendSearch /> : "" }
         
