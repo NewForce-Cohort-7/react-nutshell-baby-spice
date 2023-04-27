@@ -4,14 +4,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createArticle } from "../ApiManager";
+import TagsInput from "react-tagsinput";
+import 'react-tagsinput/react-tagsinput.css' //just copied from ChatGPT...no css file
+
 
 
 export const ArticleForm = () => {
     const [article, update] = useState({
         title: "",
         synopsis: "",
-        url: ""
+        url: "",
+        date: ""
     })
+    const [tags, setTags] = useState([])
+
+    
 
     const navigate = useNavigate()
 
@@ -26,7 +33,9 @@ export const ArticleForm = () => {
             userId: userObject.id,
             title: article.title,
             synopsis: article.synopsis,
-            url: article.url
+            url: article.url,
+            date: new Date().toISOString(),
+            tags: tags
         }
 
         return createArticle(ticketToSendToAPI)
@@ -91,6 +100,17 @@ export const ArticleForm = () => {
                                 update(copy)
                             }
                         } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="tags">Tags</label>
+                    <TagsInput value={tags} 
+                            onChange={setTags}
+                            inputProps={{placeholder: 'Enter a tag'}}
+                            addKeys={[9, 13, 32]} //Add tags on tab, enter, and space keys
+                            onlyUnique={true} //Allow only unique tags 
+                            />
                 </div>
             </fieldset>
             <button

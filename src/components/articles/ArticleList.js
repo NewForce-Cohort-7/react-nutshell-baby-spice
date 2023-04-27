@@ -1,14 +1,27 @@
+//Arnold Rispress//
+//This module is used for rendering the Articles on the main page//
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getNews } from "../ApiManager";
+import { getArticleTags } from "../ApiManager";
 import "./articles.css"
+import TagsInput from "react-tagsinput";
+import 'react-tagsinput/react-tagsinput.css';
 
 export const ArticleList = () => {
     const [articles, setArticles] = useState([])
 
-    const navigate = useNavigate()
 
-    useEffect(
+    const navigate = useNavigate()
+    
+    
+    
+
+
+    
+    
+      useEffect(
         () => {
             getNews()
             .then(
@@ -20,6 +33,8 @@ export const ArticleList = () => {
         []
     )
 
+    
+
     return <article className="articles">
         {
             articles.map(article => {
@@ -29,11 +44,20 @@ export const ArticleList = () => {
                     </div>
                     <div className="article--synopsis">Synopsis: {article.synopsis}</div>
                     <div className="article--url">URL: {article.url}</div>
+                    
+                    <div className="article--tags">Tags: <ul>
+                                 {article.tags.map((tag, index) => (
+                             <li key={index}>{tag}</li>
+                          ))}
+                        </ul> 
+                    </div>
+                   
+
                 </section>
             })
         }
 
-        <button onClick={() => navigate("/article/create")}>Add Article</button>
+        <button onClick={() => navigate("/article/create")} className="btn btn-primary" >Add Article</button>
     
     </article>
     
