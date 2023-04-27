@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { addFriend, getUserFriends } from "../ApiManager.js"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export const FriendSearch = () => {
 

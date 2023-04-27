@@ -91,7 +91,7 @@ export const getArticleById = (id) => {
     .then(r => r.json())
 }
 
-export const getFriendsById = (id) => {
+export const getFriendsByFriendId = (id) => {
     return fetch(`http://localhost:8088/friends?_expand=user&friendId=${id}`)
     .then(r => r.json())
 }
@@ -114,4 +114,10 @@ export const addFriend = (userId, friendId) => {
 
     })
     .then(response => response.json())
+}
+
+export const deleteFriend = (id) => {
+    return fetch(`http://localhost:8088/friends/${id}`, {
+        method: "DELETE"
+    })
 }
