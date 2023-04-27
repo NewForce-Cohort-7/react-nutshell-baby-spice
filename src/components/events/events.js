@@ -8,16 +8,16 @@ import "./events.css"
 
 export const Events = () => {
 
-    const [events, setEvents] = useState([])
-    const navigate = useNavigate()
+  const [events, setEvents] = useState([])
+  const navigate = useNavigate()
 
-    useEffect(() => {
-        getEvents()
-            .then((eventsArray) => {
-                setEvents(eventsArray)
-            })
-        }, []
-    )
+  useEffect(() => {
+    getEvents()
+      .then((eventsArray) => {
+        setEvents(eventsArray)
+      })
+  }, []
+  )
 
     const getMonthName = (monthNum) => {
         const date = new Date()
@@ -79,8 +79,8 @@ export const Events = () => {
 
         <button className="button" onClick={() => navigate("/event/create")}>Add Event</button>
 
-    </article>
+  </article>
 
-    
-    
+
+
 }

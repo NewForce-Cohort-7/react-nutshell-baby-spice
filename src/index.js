@@ -7,7 +7,7 @@ import { Nutshell } from "./Nutshell.js"
 const container = document.getElementById("root")
 const root = createRoot(container)
 root.render(
-    <BrowserRouter>
-        <Nutshell />
-    </BrowserRouter>
-)
+  <BrowserRouter>
+    <Nutshell />
+  </BrowserRouter>
+) 
