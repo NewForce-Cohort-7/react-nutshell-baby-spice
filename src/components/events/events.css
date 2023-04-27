@@ -11,7 +11,7 @@
     padding: 1px;
 }
 
-.event--list:first-child > div > .event {
+.event--list:first-child > div > .event:first-child {
     background: blue;
     font-weight: bolder;
     font-size: larger;

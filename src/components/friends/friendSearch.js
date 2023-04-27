@@ -44,7 +44,7 @@ export const FriendSearch = () => {
                 return user.username.toLowerCase().startsWith(searchTerms.toLowerCase())
             })
             setFiltered(searchedUsers)
-        }, [searchTerms]
+        }, [searchTerms, unfriendedUsers]
     )
 
 
