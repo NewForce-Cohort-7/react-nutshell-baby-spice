@@ -79,17 +79,6 @@ export const Tasks = () => {
           onSave={handleSaveTask}
         />
       )}
-      <article className="tasks">
-        {filteredTasks.map((task) => (
-          <Task
-            key={task.id}
-            task={task}
-            onToggleCompleted={handleToggleCompleted}
-            onEditTask={handleEditTask}
-            onDeleteTask={handleDeleteTask}
-          />
-        ))}
-      </article>
     </>
   );
 };
