@@ -45,7 +45,7 @@ export const ChatBox = () => {
         })
         .then(response => response.json())
         .then(() => {
-         navigate("/")  
+         window.location.reload() 
 
         })
     }
