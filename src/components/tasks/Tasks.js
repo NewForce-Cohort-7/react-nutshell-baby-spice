@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { getTasks, createTask, editTask } from "../ApiManager";
 import { TaskForm } from "./TaskForm";
-import { Task } from "./Task";
 import { ModifyTaskForm } from "./ModifyTaskForm";
 
 export const Tasks = () => {
@@ -30,20 +29,6 @@ export const Tasks = () => {
     });
   };
 
-  const handleToggleCompleted = (id, completed) => {
-    const task = tasks.find((task) => task.id === id);
-    const updatedTask = { ...task, completed };
-    editTask(updatedTask).then(() => {
-      setTasks((currentTasks) =>
-        currentTasks.map((task) => (task.id === id ? updatedTask : task))
-      );
-    });
-  };
-
-  const handleEditTask = (id) => {
-    setEditingTask(id);
-  };
-
   const handleSaveTask = (id, title, description, date) => {
     const task = tasks.find((task) => task.id === id);
     const updatedTask = { ...task, title, description, date };
@@ -59,17 +44,9 @@ export const Tasks = () => {
     setEditingTask(null);
   };
 
-  const handleDeleteTask = (id) => {
-    fetch(`http://localhost:8088/tasks/${id}`, {
-      method: "DELETE",
-    }).then(() => {
-      setTasks((currentTasks) => currentTasks.filter((task) => task.id !== id));
-    });
-  };
-
   return (
     <>
-      <h2>List of Tasks</h2>
+      <h2>Add A Task</h2>
       {editingTask === null ? (
         <TaskForm onAddTask={(taskObject) => handleAddTask(taskObject)} />
       ) : (

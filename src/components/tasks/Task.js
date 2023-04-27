@@ -1,4 +1,6 @@
 import React from "react";
+import { CompletedTasks } from "./CompletedTasks";
+import { Todos } from "./Todos";
 
 export const Task = ({
   task,
@@ -7,7 +9,7 @@ export const Task = ({
   onDeleteTask,
 }) => {
   const handleToggleCompleted = () => {
-    onToggleCompleted(task.id, !task.completed);
+    onToggleCompleted(task.id, !task.completed)
   };
 
   const handleEditTask = () => {
@@ -20,11 +22,16 @@ export const Task = ({
 
   return (
     <div key={task.id} className="task">
+      <h3>Title:</h3>
       <h3>{task.title}</h3>
+      <p>Description:</p>
       <p>{task.description}</p>
+      <p>Date:</p>
       <p>{task.date}</p>
       <button onClick={handleToggleCompleted}>
-        {task.completed ? "Mark as Incomplete" : "Mark as Complete"}
+        <>{task.completed ? <>Status:  Incomplete|<b>Complete</b></> : <>Status: <b>Incomplete</b>|Complete </>}
+
+        </>
       </button>
       <button onClick={handleEditTask}>Edit</button>
       <button onClick={handleDeleteTask}>Delete</button>

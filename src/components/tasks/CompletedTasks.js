@@ -1,34 +1,35 @@
 import { useState, useEffect } from "react";
-import { createTask, editTask } from "../ApiManager";
-import { TaskForm } from "./TaskForm";
+import { editTask } from "../ApiManager";
 import { Task } from "./Task";
 import { ModifyTaskForm } from "./ModifyTaskForm";
 import { getCompletedTasks } from "../ApiManager"
 
-const localActiveUser = localStorage.getItem("activeUser");
-const activeUserObject = JSON.parse(localActiveUser);
-
-export const CompletedTasks = () => {
+export const CompletedTasks = ({ toggleShowCompleted, toggleShowTodos, toggleShowTasks }) => {
   const [completedTasks, setCompletedTasks] = useState([]);
-  const [filteredCompletedTasks, setFiltered] = useState([]);
   const [editingTask, setEditingTask] = useState(null);
 
   useEffect(() => {
+    getCompletedFunction()
+  }, []
+  )
+
+  const getCompletedFunction = () => {
     getCompletedTasks()
       .then((completedArray) => {
         setCompletedTasks(completedArray)
       })
-  }, []
-  )
+  }
 
   const handleToggleCompleted = (id, completed) => {
     const task = completedTasks.find((task) => task.id === id);
     const updatedTask = { ...task, completed };
-    editTask(updatedTask).then(() => {
-      setCompletedTasks((currentCompletedTasks) =>
-        currentCompletedTasks.map((task) => (task.id === id ? updatedTask : task))
-      );
-    });
+    editTask(updatedTask)
+      .then(getCompletedFunction())
+      .then(() => {
+        setCompletedTasks((currentCompletedTasks) =>
+          currentCompletedTasks.map((task) => (task.id === id ? updatedTask : task))
+        );
+      })
   };
 
   const handleEditTask = (id) => {
@@ -60,7 +61,7 @@ export const CompletedTasks = () => {
 
   return (
     <>
-      <h2>List of completed tasks</h2>
+      <h2>Completed Tasks</h2>
       {editingTask === null ? (
         <article className="completedTasks">
           {completedTasks.map((task) => (

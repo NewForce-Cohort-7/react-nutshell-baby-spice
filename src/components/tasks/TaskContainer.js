@@ -10,27 +10,33 @@ export const TaskContainer = () => {
   const [showCompleted, setShowCompleted] = useState(false);
 
   const toggleShowTasks = () => {
-    setShowTasks(!showTasks);
+    setShowTasks(true);
+    setShowTodos(false);
+    setShowCompleted(false);
   };
 
   const toggleShowTodos = () => {
-    setShowTodos(!showTodos);
+    setShowTasks(false);
+    setShowTodos(true);
+    setShowCompleted(false);
   };
 
   const toggleShowCompleted = () => {
-    setShowCompleted(!showCompleted);
+    setShowTasks(false);
+    setShowTodos(false);
+    setShowCompleted(true);
   };
 
   return (
     <>
       {showTasks ? (
-        <Tasks />
+        <Tasks toggleShowCompleted={toggleShowCompleted} toggleShowTodos={toggleShowTodos} toggleShowTasks={toggleShowTasks} />
       )
         : showTodos ? (
-          <Todos />
+          <Todos toggleShowCompleted={toggleShowCompleted} toggleShowTodos={toggleShowTodos} toggleShowTasks={toggleShowTasks} />
         )
           : showCompleted ? (
-            <CompletedTasks />
+            <CompletedTasks toggleShowCompleted={toggleShowCompleted} toggleShowTodos={toggleShowTodos} toggleShowTasks={toggleShowTasks} />
           ) : (
             <>
               <AddTaskButton label="Add Task" onClick={() => toggleShowTasks()} />

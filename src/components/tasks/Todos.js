@@ -1,34 +1,36 @@
 import { useState, useEffect } from "react";
-import { createTask, editTask } from "../ApiManager";
-import { TaskForm } from "./TaskForm";
+import { editTask } from "../ApiManager";
 import { Task } from "./Task";
 import { ModifyTaskForm } from "./ModifyTaskForm";
 import { getTodos } from "../ApiManager"
+import { AddTaskButton } from "./AddTaskButton";
 
-const localActiveUser = localStorage.getItem("activeUser");
-const activeUserObject = JSON.parse(localActiveUser);
-
-export const Todos = () => {
+export const Todos = (toggleShowCompleted, toggleShowTodos, toggleShowTasks) => {
   const [todos, setTodos] = useState([]);
-  const [filteredTodos, setFilteredTodos] = useState([]);
   const [editingTodos, setEditingTodos] = useState(null);
 
   useEffect(() => {
+    getTodosFunction()
+  }, []
+  )
+
+  const getTodosFunction = () => {
     getTodos()
       .then((todosArray) => {
         setTodos(todosArray)
       })
-  }, []
-  )
+  }
 
   const handleToggleCompleted = (id, completed) => {
     const task = todos.find((task) => task.id === id);
     const updatedTask = { ...task, completed };
-    editTask(updatedTask).then(() => {
-      setTodos((currentTodos) =>
-        currentTodos.map((task) => (task.id === id ? updatedTask : task))
-      );
-    });
+    editTask(updatedTask)
+      .then(getTodosFunction())
+      .then(() => {
+        setTodos((currentTodos) =>
+          currentTodos.map((task) => (task.id === id ? updatedTask : task))
+        );
+      });
   };
 
   const handleEditTask = (id) => {
@@ -60,7 +62,7 @@ export const Todos = () => {
 
   return (
     <>
-      <h2>List of completed tasks</h2>
+      <h2>Todos</h2>
       {editingTodos === null ? (
         <article className="todos">
           {todos.map((task) => (
@@ -72,6 +74,11 @@ export const Todos = () => {
               onDeleteTask={handleDeleteTask}
             />
           ))}
+          <>
+            <AddTaskButton label="Add Task" onClick={() => toggleShowTasks()} />
+            <AddTaskButton label="Add Todo" onClick={() => toggleShowTodos()} />
+            <AddTaskButton label="Completed" onClick={() => toggleShowCompleted()} />
+          </>
         </article>
       ) : (
         <ModifyTaskForm
