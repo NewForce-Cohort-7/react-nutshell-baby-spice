@@ -13,7 +13,7 @@ import { ChatList } from "../chat/ChatList"
 import { FriendsList } from "../friends/friends.js"
 
 
-export const ApplicationViews = () => {
+export const ApplicationViews = ( {newsRef, chatRef, tasksRef, eventsRef, friendsRef} ) => {
 
     return (
         <Routes>
@@ -21,21 +21,21 @@ export const ApplicationViews = () => {
 
                 <div className="main--container">
                     <div className="section--left">
-                        <div id="tasks" className="tasks--container">TASKS GO HERE</div>
+                        <div ref={tasksRef} id="tasks" className="tasks--container">TASKS GO HERE</div>
                     </div>
 
                     <div className="section--middle">
-                        <div id="events" className="events--container"> 
+                        <div ref={eventsRef} id="events" className="events--container"> 
                             <Events/> 
                         </div>
-                        <div id="news" className="news--container"><ArticleList/></div>
+                        <div ref={newsRef} id="news" className="news--container"><ArticleList/></div>
                     
 
                     </div>
 
                     <div className="section--right">
-                        <div id="friends" className="friends--container"><FriendsList /> </div>
-                        <div id="chat" className="messages--container"><ChatBox /> <ChatList /> </div>
+                        <div ref={friendsRef} id="friends" className="friends--container"><FriendsList /> </div>
+                        <div ref={chatRef} id="chat" className="messages--container"><ChatBox /> <ChatList /> </div>
                     </div>
 
                     <Outlet/>
