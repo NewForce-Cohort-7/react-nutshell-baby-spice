@@ -7,6 +7,7 @@ import { createArticle } from "../ApiManager";
 
 
 
+
 export const ArticleForm = () => {
     const [article, update] = useState({
         title: "",
@@ -15,6 +16,8 @@ export const ArticleForm = () => {
         date: "",
         tags: ""
     })
+
+    
 
     const navigate = useNavigate()
 
