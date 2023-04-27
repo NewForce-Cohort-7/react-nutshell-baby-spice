@@ -1,53 +1,15 @@
-// import { useEffect, useState } from "react"
-// import { useNavigate } from "react-router-dom"
-// import { Link } from "react-router-dom"
-// import { getChats } from "../ApiManager.js"
-// import "./chats.css"
-// import { getChats } from "../ApiManager"
+//AUTHOR:Aaron Dean
+//Purpose: Lists all messages and handles the like and dislike button
 
-// export const ChatList = () => {
-//     const [chats, setChats] = useState([])
-//     const localUser = localStorage.getItem("activeUser")
-//     const userObject = JSON.parse(localUser)
-   
-//     useEffect(() => {
-//       getChats()
-//         .then((chatArray) => { setChats(chatArray) })
-//     }, [])
-    
-    
-    
-  
-//     return (
-//       <div className="chat--container">
-//         <h2>CHAT</h2>
-//         <article className="chats">
-//           {chats.map((chat) => (
-//             <section className="chat" key={`chat--${chat.id}`}>
-//             <div className="chatter">{chat.user.username}:</div>
-//               <Link to={`/messages/edit/${chat.id}`}>
-//                 {chat.message}
-//               </Link>
-              
-//             </section>
-//           ))}
-//         </article>
-//       </div>
-//     )
-//   }
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
-import { getChats } from "../ApiManager";
+import { getChats, getOnlyChats } from "../ApiManager";
 
 export const ChatList = () => {
   const [chats, setChats] = useState([]);
-
-  const localUser = localStorage.getItem("activeUser");
-  const userObject = JSON.parse(localUser);
-
   useEffect(() => {
-    getChats()
+    getOnlyChats()
       .then((chatArray) => {
         const updatedChatArray = chatArray.map((chat) => {
           if (!chat.dislikes) {
@@ -103,9 +65,9 @@ export const ChatList = () => {
           <section className="chat" key={`chat--${chat.id}`}>
             <Link to={`/messages/edit/${chat.id}`}>{chat.message}</Link>
             <div>
-              <button onClick={() => handleLike(chat.id)}>Like</button>
+              <button className="button" onClick={() => handleLike(chat.id)}>Like</button>
               <span>{chat.likes}</span>
-              <button onClick={() => handleDislike(chat.id)}>Dislike</button>
+              <button className="button" onClick={() => handleDislike(chat.id)}>Dislike</button>
               <span>{chat.dislikes}</span>
             </div>
           </section>

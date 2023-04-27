@@ -1,3 +1,6 @@
+//AUTHOR:Aaron Dean
+//Purpose: A form to submit new messages
+
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 export const ChatBox = () => {

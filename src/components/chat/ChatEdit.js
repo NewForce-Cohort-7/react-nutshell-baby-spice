@@ -1,3 +1,7 @@
+//AUTHOR:Aaron Dean
+//Purpose: A form to edit messages
+
+
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getChatById, editChat  } from "../ApiManager"
