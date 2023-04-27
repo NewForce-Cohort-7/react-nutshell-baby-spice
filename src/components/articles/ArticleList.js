@@ -53,7 +53,7 @@ export const ArticleList = () => {
                     </div>
                     <div className="article--synopsis">Synopsis: {article.synopsis}</div>
                     <div className="article--url">URL: {article.url}</div>
-                    <div className="article--tags">Tags: {article.tags.name} </div>
+                    <div className="article--tags">Tags:</div>
                    
 
                 </section>
