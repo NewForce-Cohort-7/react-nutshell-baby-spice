@@ -4,7 +4,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getNews } from "../ApiManager";
+import { getArticleTags } from "../ApiManager";
 import "./articles.css"
+import TagsInput from "react-tagsinput";
+import 'react-tagsinput/react-tagsinput.css';
 
 export const ArticleList = () => {
     const [articles, setArticles] = useState([])
@@ -41,7 +44,13 @@ export const ArticleList = () => {
                     </div>
                     <div className="article--synopsis">Synopsis: {article.synopsis}</div>
                     <div className="article--url">URL: {article.url}</div>
-                    <div className="article--tags">Tags: </div>
+                    
+                    <div className="article--tags">Tags: <ul>
+                                 {article.tags.map((tag, index) => (
+                             <li key={index}>{tag}</li>
+                          ))}
+                        </ul> 
+                    </div>
                    
 
                 </section>

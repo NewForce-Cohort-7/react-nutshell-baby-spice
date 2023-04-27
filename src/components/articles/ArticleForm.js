@@ -4,7 +4,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createArticle } from "../ApiManager";
-
+import TagsInput from "react-tagsinput";
+import 'react-tagsinput/react-tagsinput.css' //just copied from ChatGPT...no css file
 
 
 
@@ -13,9 +14,9 @@ export const ArticleForm = () => {
         title: "",
         synopsis: "",
         url: "",
-        date: "",
-        tags: ""
+        date: ""
     })
+    const [tags, setTags] = useState([])
 
     
 
@@ -34,7 +35,7 @@ export const ArticleForm = () => {
             synopsis: article.synopsis,
             url: article.url,
             date: new Date().toISOString(),
-            tags: article.tags.split(",").map((tag) => ({name: tag.trim()}))
+            tags: tags
         }
 
         return createArticle(ticketToSendToAPI)
@@ -102,22 +103,14 @@ export const ArticleForm = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="tags-input-container">
-                   
+                <div className="form-group">
                     <label htmlFor="tags">Tags</label>
-                    <input
-                        type="text"
-                        className="tags-input"
-                        placeholder="Enter a tag"
-                        value={article.tags}
-                        onChange={
-                            (evt) => {
-                                const copy = {...article}
-                                copy.tags = evt.target.value
-                                update(copy)
-                            }
-                        }
-                         />
+                    <TagsInput value={tags} 
+                            onChange={setTags}
+                            inputProps={{placeholder: 'Enter a tag'}}
+                            addKeys={[9, 13, 32]} //Add tags on tab, enter, and space keys
+                            onlyUnique={true} //Allow only unique tags 
+                            />
                 </div>
             </fieldset>
             <button

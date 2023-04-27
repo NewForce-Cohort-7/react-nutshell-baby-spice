@@ -96,6 +96,11 @@ export const getArticleById = (id) => {
     .then(r => r.json())
 }
 
+export const getArticleTags = () => {
+    return fetch(`http://localhost:8088/tags`)
+    .then(r => r.json())
+}
+
 export const getFriendsByFriendId = (id) => {
     return fetch(`http://localhost:8088/friends?_expand=user&friendId=${id}`)
     .then(r => r.json())
