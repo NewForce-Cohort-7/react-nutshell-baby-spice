@@ -74,11 +74,6 @@ export const Todos = (toggleShowCompleted, toggleShowTodos, toggleShowTasks) => 
               onDeleteTask={handleDeleteTask}
             />
           ))}
-          <>
-            <AddTaskButton label="Add Task" onClick={() => toggleShowTasks()} />
-            <AddTaskButton label="Add Todo" onClick={() => toggleShowTodos()} />
-            <AddTaskButton label="Completed" onClick={() => toggleShowCompleted()} />
-          </>
         </article>
       ) : (
         <ModifyTaskForm
