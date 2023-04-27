@@ -18,6 +18,11 @@ export const getChats = () => {
     .then(response => response.json())
 }
 
+export const getOnlyChats = () => {
+    return fetch('http://localhost:8088/messages')
+    .then(response => response.json())
+}
+
 export const createEvent = (eventObject) => {
   return fetch('http://localhost:8088/events', {
     method: "POST",
