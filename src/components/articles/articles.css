@@ -26,3 +26,13 @@
     text-decoration: none;
     color: blue;
 }
+
+.article--tags {
+    font-weight: lighter;
+}
+
+.article--delete {
+    background-color: red;
+    color: white;
+    font-size: small;
+}
