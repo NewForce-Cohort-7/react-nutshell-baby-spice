@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getNews } from "../ApiManager";
-import { getArticleTags } from "../ApiManager";
+import { deleteArticle } from "../ApiManager";
 import "./articles.css"
 import TagsInput from "react-tagsinput";
 import 'react-tagsinput/react-tagsinput.css';
@@ -51,6 +51,10 @@ export const ArticleList = () => {
                           ))}
                         </ul> 
                     </div>
+                    {/* WILL HAVE TO RESET PAGE TO SEE THAT ARTICLE IS GONE */}
+                    <button onClick={() => deleteArticle(article.id)}  className="button--delete">
+                        I don't want to see this article</button>
+                        
                    
 
                 </section>
