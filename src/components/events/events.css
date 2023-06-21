@@ -1,0 +1,49 @@
+/* AUTHOR: JOEL DICK */
+/* PURPOSE: STYLE THE EVENTS AND THE EVENT FORMS*/
+
+.events{
+    padding: 10px;
+}
+
+.event{
+    background: white;
+    margin:15px;
+    padding: 1px;
+}
+
+.event--list:first-child > div > .event:first-child {
+    background: blue;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.event--location{
+    font-size: large;
+}
+
+.event--date{
+    font-size: large;
+}
+
+.event--name > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.event--name > a:hover {
+    text-decoration: none;
+    color: gray;
+}
+
+.eventform{
+    margin: 20px;
+}
+
+.event--input{
+    width: 400px;
+    margin-top: 5px;
+}
+
+h3 {
+    margin: 0;
+}

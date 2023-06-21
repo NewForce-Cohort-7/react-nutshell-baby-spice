@@ -1,0 +1,40 @@
+.navbar--links{
+    display: flex;
+}
+
+.navbar--container {
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.navbar--item > a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 15px;
+    font-size: 1.25rem;
+}
+
+ul, li {
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+}
+
+.navbar--logo{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
